@@ -1,0 +1,59 @@
+# ─── Node ─────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Build ────────────────────────────────────────────
+build/
+dist/
+.svelte-kit/
+.svelte/
+
+# ─── Vite ─────────────────────────────────────────────
+.vite/
+
+# ─── Environment Variables ────────────────────────────
+.env
+.env.*.local
+.env.local
+
+# ─── IDEs and Editors ─────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── OS Artifacts ─────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Coverage & Testing ───────────────────────────────
+coverage/
+*.lcov
+
+# ─── Logs ─────────────────────────────────────────────
+*.log
+logs/
+*.tsbuildinfo
+
+# ─── Output from Static Adapters ──────────────────────
+output/
+static/generated/
+
+# ─── SvelteKit Preview ────────────────────────────────
+.vercel/
+.netlify/
+firebase.json
+functions/
+
+# ─── Misc ─────────────────────────────────────────────
+*.swp
+*.bak
+*.tmp
+
+# ─── Dependency Caching ───────────────────────────────
+.pnpm-store/
