@@ -1,12 +1,23 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button";
+  import Activity from "lucide-svelte/icons/activity";
+  import ArrowUpRight from "lucide-svelte/icons/arrow-up-right";
+  import CircleUser from "lucide-svelte/icons/circle-user";
+  import CreditCard from "lucide-svelte/icons/credit-card";
+  import DollarSign from "lucide-svelte/icons/dollar-sign";
+  import Menu from "lucide-svelte/icons/menu";
+  import Package2 from "lucide-svelte/icons/package-2";
+  import Search from "lucide-svelte/icons/search";
+  import Users from "lucide-svelte/icons/users";
+
+  import * as Avatar from "$lib/components/ui/avatar/index.js";
+  import { Badge } from "$lib/components/ui/badge/index.js";
+  import { Button } from "$lib/components/ui/button/index.js";
   import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
+  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
   import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import * as Form from "$lib/components/ui/form";
-  import * as Accordion from "$lib/components/ui/accordion";
-  import * as Alert from "$lib/components/ui/alert/index.js";
+  import * as Sheet from "$lib/components/ui/sheet/index.js";
+  import * as Table from "$lib/components/ui/table/index.js";
+  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { Progress } from "$lib/components/ui/progress";
 
   let i = 0;
@@ -72,197 +83,61 @@
   }
 </script>
 
-<section class="mx-auto shrink-0 p-6">
-  <section>
-    <div class="mb-2">
-      <h1
-        class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
+<div class="flex min-h-screen w-full flex-col">
+  <header
+    class="bg-background sticky top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6"
+  >
+    <nav
+      class="hidden flex-col gap-20 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
+    >
+      <a
+        href="##"
+        class="flex items-center gap-2 text-lg font-semibold md:text-base"
       >
-        Device manager
-      </h1>
-    </div>
-  </section>
+        <Package2 class="h-6 w-6" />
+        <span class="sr-only">Acme Inc</span>
+      </a>
+      <a
+        data-sveltekit-reload
+        href="./"
+        class="text-foreground hover:text-foreground transition-colors"
+      >
+        Home
+      </a>
+      <a
+        href="./ActiveDevices"
+        class="text-muted-foreground hover:text-foreground transition-colors"
+      >
+        Active devices
+      </a>
+      <a
+        data-sveltekit-reload
+        href="./AddDevices"
+        class="text-muted-foreground hover:text-foreground transition-colors"
+      >
+        Add devices
+      </a>
+      <a
+        href="./UploadFirmware"
+        class="text-muted-foreground hover:text-foreground transition-colors"
+      >
+        Upload Firmware
+      </a>
 
-  <section class="grid-cols-2 items-center">
-    <div class="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <Button on:click={handleClick}>Show Alert</Button>
+      <a
+        href="./Analytics"
+        class="text-muted-foreground hover:text-foreground transition-colors"
+      >
+        Analytics
+      </a>
+    </nav>
+  </header>
 
-      {#if showAlert == true}
-        <Alert.Root
-          variant="destructive"
-          class="mt-4 border-destructive bg-destructive/10 text-destructive rounded-lg p-4"
-        >
-          <Alert.Title class="font-semibold text-lg">Error</Alert.Title>
-          <Alert.Description>
-            Your session has expired. Please login again.
-          </Alert.Description>
-        </Alert.Root>
-      {/if}
-
-      <Button onclick={greet}>click me</Button>
-    </div>
-
-    <div>
-      <Button onclick={() => count++}>
-        clicks: {count}
-      </Button>
-
-      <Alert.Root variant="destructive" class="lmao">
-        <Alert.Title>Error</Alert.Title>
-        <Alert.Description
-          >Your session has expired. Please login again.</Alert.Description
-        >
-      </Alert.Root>
-    </div>
-  </section>
-
-  <section>
-    <div class="d">
-      <h2>active nodes</h2>
-
-      <p>add active nodes here</p>
-
-      <div class="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-        <div
-          class="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4"
-        >
-          <Card.Root
-            data-x-chunk-name="dashboard-05-chunk-1"
-            data-x-chunk-description="A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar."
-          >
-            <Card.Header class="pb-2">
-              <Card.Description>Node 1</Card.Description>
-              <Card.Title class="text-4xl">ESP8266</Card.Title>
-            </Card.Header>
-            <Card.Content>
-              <div class="text-muted-foreground text-xs">Charge</div>
-            </Card.Content>
-            <Card.Footer>
-              <Progress value={25} aria-label="25% increase" />
-            </Card.Footer>
-          </Card.Root>
-          <Card.Root
-            data-x-chunk-name="dashboard-05-chunk-2"
-            data-x-chunk-description="A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar."
-          >
-            <Card.Header class="pb-2">
-              <Card.Description>Node 2</Card.Description>
-              <Card.Title class="text-3xl">Audrino UNO</Card.Title>
-            </Card.Header>
-            <Card.Content>
-              <div class="text-muted-foreground text-xs">Charge</div>
-            </Card.Content>
-            <Card.Footer>
-              <Progress value={12} aria-label="12% increase" />
-            </Card.Footer>
-          </Card.Root>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="Device-add">
-      <h2>add device</h2>
-
-      <form onsubmit={handleSubmit}>
-        <label>
-          Device ID:
-          <input type="text" bind:value={deviceId} />
-        </label>
-
-        <label>
-          MAC address:
-          <input type="text" bind:value={MACaddress} />
-        </label>
-
-        <Button type="submit">Submit</Button>
-      </form>
-    </div>
-    <div class="grid-cols-3 mx-auto">
-      <p>add device tabel goes here</p>
-      <button onclick={addBlock}> Add device </button>
-    </div>
-
-    <div class="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      {#each blocks as block (block.id)}
-        <!--<span>{block.message}</span> -->
-        <Card.Root
-          data-x-chunk-name="dashboard-05-chunk-1"
-          data-x-chunk-description="A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar."
-        >
-          <Card.Header class="pb-2">
-            <Card.Description>Node 1</Card.Description>
-            <Card.Title class="text-4xl text-zinc-900">ESP8266</Card.Title>
-          </Card.Header>
-          <Card.Content>
-            <div class="text-muted-foreground text-xs">Charge</div>
-          </Card.Content>
-          <Card.Footer>
-            <Progress value={25} aria-label="25% increase" />
-            <button
-              onclick={() => removeBlock(block.id)}
-              class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded ml-4"
-            >
-              Remove
-            </button>
-          </Card.Footer>
-        </Card.Root>
-      {/each}
-    </div>
-  </section>
-  <section>
-    <div class="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <h2>upload firmware</h2>
-
-      <Button onclick={inc}>upload firmware</Button>
-
-      <Card.Root class="w-[350px]">
-        <Card.Header>
-          <Card.Title>Create project</Card.Title>
-          <Card.Description
-            >Deploy your new project in one-click.</Card.Description
-          >
-        </Card.Header>
-        <Card.Content>
-          <form>
-            <div class="grid w-full items-center gap-4">
-              <div class="flex flex-col space-y-1.5">
-                <Label for="name">Name</Label>
-                <Input id="name" placeholder="Name of your project" />
-              </div>
-              <div class="flex flex-col space-y-1.5">
-                <Label for="framework">Framework</Label>
-                <Select.Root>
-                  <Select.Trigger id="framework">
-                    <Select.Value placeholder="Select" />
-                  </Select.Trigger>
-                  <Select.Content>
-                    {#each frameworks as framework}
-                      <Select.Item
-                        value={framework.value}
-                        label={framework.label}>{framework.label}</Select.Item
-                      >
-                    {/each}
-                  </Select.Content>
-                </Select.Root>
-              </div>
-            </div>
-          </form>
-        </Card.Content>
-        <Card.Footer class="flex justify-between">
-          <Button>Cancel</Button>
-          <Button>Deploy</Button>
-        </Card.Footer>
-      </Card.Root>
-    </div>
-
+  <main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+    <h1 class="text-2xl font-bold">Welcome to Whale IOT</h1>
     <p>
-      Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read
-      the documentation
+      seamlessly manage your Iot devices from a centralised dashboard with a
+      sleek and post modern design
     </p>
-  </section>
-</section>
-
-<style>
-</style>
+  </main>
+</div>
