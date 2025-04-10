@@ -32,6 +32,7 @@
 		"zod": "^3.24.2"
 	},
 	"dependencies": {
+		"chart.js": "^4.4.8",
 		"lucide-svelte": "^0.487.0"
 	}
 }

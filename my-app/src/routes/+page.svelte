@@ -108,7 +108,7 @@
         href="./ActiveDevices"
         class="text-muted-foreground hover:text-foreground transition-colors"
       >
-        Active devices
+        Devices
       </a>
       <a
         data-sveltekit-reload

@@ -20,56 +20,6 @@
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { Progress } from "$lib/components/ui/progress";
 
-  let i = 0;
-  let deviceId = "";
-  let MACaddress = "";
-  let count = $state(0);
-  let deviceName = "";
-
-  const frameworks = [
-    {
-      value: "sveltekit",
-      label: "SvelteKit",
-    },
-    {
-      value: "next",
-      label: "Next.js",
-    },
-    {
-      value: "astro",
-      label: "Astro",
-    },
-    {
-      value: "nuxt",
-      label: "Nuxt.js",
-    },
-  ];
-
-  function greet() {
-    alert("Welcome to Svelte!");
-  }
-
-  function inc() {
-    i += 1;
-  }
-
-  function handleSubmit(event: SubmitEvent) {
-    event.preventDefault();
-    console.log("device ID:", deviceId);
-    console.log("Device Mac Address:", MACaddress);
-  }
-
-  let showAlert = $state(false);
-
-  function handleClick() {
-    showAlert = true;
-
-    // Optional: auto-hide after 5 seconds
-    setTimeout(() => {
-      showAlert = false;
-    }, 5000);
-  }
-
   let blocks = $state<{ id: number; message: string }[]>([]);
   let counter = $state(1);
 
@@ -109,7 +59,7 @@
         href="./ActiveDevices"
         class="text-foreground hover:text-foreground transition-colors"
       >
-        Active devices
+        Devices
       </a>
       <a
         data-sveltekit-reload
@@ -135,8 +85,9 @@
   </header>
 
   <main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+    <h1 class="text-2xl font-bold">Active Devices</h1>
     <div class="grid-cols-3 mx-auto">
-      <Button onclick={addBlock} href="##" size="sm" class="ml-auto gap-1">
+      <Button onclick={addBlock} href="##" size="lg" class="ml-auto gap-1">
         Add device
       </Button>
     </div>
@@ -171,5 +122,7 @@
         </Card.Root>
       {/each}
     </div>
+
+    <div><h1 class="text-2xl font-bold">Deactivated Devices</h1></div>
   </main>
 </div>

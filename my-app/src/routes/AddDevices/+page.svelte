@@ -19,6 +19,12 @@
   import * as Table from "$lib/components/ui/table/index.js";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { Progress } from "$lib/components/ui/progress";
+
+
+  import type { PageData } from "./$types.js";
+  import SettingsForm from "./settings-form.svelte";
+  let { data }: { data: PageData } = $props();
+  
 </script>
 
 <div class="flex min-h-screen w-full flex-col">
@@ -45,7 +51,7 @@
         href="./ActiveDevices"
         class="text-muted-foreground hover:text-foreground transition-colors"
       >
-        Active devices
+        Devices
       </a>
       <a
         data-sveltekit-reload
@@ -71,7 +77,9 @@
   </header>
 
   <main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-    <p>Add devices goes here</p>
+    <h1 class="text-2xl font-bold">Add Device</h1>
+    
+    <SettingsForm {data} />
     
   </main>
 </div>
